@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Forms</title>
+    <script src="../js/angular.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/bootstrap-theme.css" rel="stylesheet" />
+    <script>
+        angular.module("exampleApp", [])
+                .controller("defaultCtrl", function ($scope) {
+                    $scope.chicken = true;
+                    $scope.chickenEgg='chicken';
+//                    $scope.formData = {
+//                        chickenEgg :''
+//                    };
+                });
+    </script>
+</head>
+<body>
+<div id="todoPanel" class="panel" ng-controller="defaultCtrl">
+    <form name="myFormRadio">
+        <div class="well">
+            <label>Chicken or the Egg?</label>
+            <div class="form-group">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="chickenEgg" value="chicken" ng-model="chickenEgg" ng-checked="chicken">
+                        Chicken
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="chickenEgg" value="egg" ng-model="chickenEgg">
+                        Egg
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+        <pre>
+            {{ chickenEgg }}
+        </pre>
+    <!--<pre>{{ formData }}</pre>-->
+</div>
+
+</body>
+</html>

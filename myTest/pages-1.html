@@ -5,7 +5,6 @@
     <title>表格</title>
 </head>
 <body>
-<!-- 新 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
 <style>
     #divMain {
@@ -76,19 +75,13 @@
             $scope.pageList = [];
             $scope.selPage = 1;
 
-
-
-
-            $scope.seled = false;
-            $scope.selBox = [];
+            $scope.selBox = [];  //暂存 || 获取已选择的选项(id)
             //设置表格数据源(分页)
             $scope.setData = function () {
                 //通过当前页数筛选出表格当前显示数据
                 $scope.items = $scope.data.slice(($scope.pageSize * ($scope.selPage - 1)), ($scope.selPage * $scope.pageSize));
-
+                //取回存在selBox里的之前选择的选项,重新选择,且count判断是否全选
                 $scope.selectAll=false;
-
-
                 var count = 0;
                 for(var i in $scope.items){
                     for(var j in $scope.selBox){
@@ -157,11 +150,6 @@
                 //$scope.selBox.push({id:$scope.items[index].id});
             };
 
-
-            //获取已选项
-            $scope.getSel = function(){
-
-            };
             //分页要repeat的数组
             for (var i = 0; i < $scope.newPages; i++) {
                 $scope.pageList.push(i + 1);
@@ -191,7 +179,7 @@
             //上一页
             $scope.Previous = function () {
                 $scope.selectPage($scope.selPage - 1);
-            }
+            };
             //下一页
             $scope.Next = function () {
                 $scope.selectPage($scope.selPage + 1);
